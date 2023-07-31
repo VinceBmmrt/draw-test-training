@@ -1,8 +1,12 @@
 // Get the drawing board container
 const drawingBoard = document.querySelector(".drawing-board");
+const gridSizeForm = document.getElementById("grid-size-form");
+const gridSizeInput = document.getElementById("grid-size");
 
 // Function to create the pixel grid
 function createPixelGrid(rows, columns) {
+  drawingBoard.innerHTML = ""; // Clear the previous grid
+
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       const pixel = document.createElement("div");
@@ -10,6 +14,9 @@ function createPixelGrid(rows, columns) {
       drawingBoard.appendChild(pixel);
     }
   }
+
+  // Set the grid-template-columns based on the number of columns
+  drawingBoard.style.gridTemplateColumns = `repeat(${columns}, 30px)`;
 }
 
 // Create an 8x8 pixel grid
@@ -22,3 +29,13 @@ drawingBoard.addEventListener("click", (event) => {
     event.target.classList.toggle("active");
   }
 });
+
+// FORM
+
+function handleFormSubmit(event) {
+  event.preventDefault();
+  const gridSize = parseInt(gridSizeInput.value, 10);
+  createPixelGrid(gridSize, gridSize);
+}
+
+gridSizeForm.addEventListener("submit", handleFormSubmit);
