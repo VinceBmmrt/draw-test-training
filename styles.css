@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.drawing-board {
+  display: grid;
+  grid-template-columns: repeat(8, 30px); /* 8 columns, each with 30px width */
+  gap: 1px; /* Add spacing between pixels */
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.pixel {
+  width: 100%;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.pixel.active {
+  background-color: #000; /* Change color of active pixels */
+}
